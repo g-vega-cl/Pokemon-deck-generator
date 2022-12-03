@@ -2,12 +2,9 @@ package queries
 
 import (
 	"database/sql"
-	"encoding/json"
 	"fmt"
-	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/mux"
 )
 
 type Post struct {
@@ -16,6 +13,8 @@ type Post struct {
 }
 
 func Queries() {
+
+	fmt.Println("Running queries")
 	db, err := sql.Open("mysql", "root:adminroot@tcp(127.0.0.1:3306)/tutorial")
 
 	if err != nil {
@@ -23,11 +22,11 @@ func Queries() {
 	}
 	defer db.Close()
 
-	// insert, err := db.Query("INSERT INTO posts(title) VALUES('My post')")
-	// if err != nil {
-	//   panic(err.Error())
-	// }
-	// defer insert.Close()
+	insert, err := db.Query("INSERT INTO posts(id,title) VALUES('2','My post')")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer insert.Close()
 
 	posts, err := db.Query("SELECT title FROM posts")
 	if err != nil {
@@ -45,20 +44,20 @@ func Queries() {
 	fmt.Println("end")
 }
 
-func getPost(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	params := mux.Vars(r)
-	for _, item := range posts {
-		if item.ID == params["id"] {
-			json.NewEncoder(w).Encode(item)
-			break
-		}
-		return
-	}
-	json.NewEncoder(w).Encode(&Post{})
-}
+// func getPost(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	params := mux.Vars(r)
+// 	for _, item := range posts {
+// 		if item.ID == params["id"] {
+// 			json.NewEncoder(w).Encode(item)
+// 			break
+// 		}
+// 		return
+// 	}
+// 	json.NewEncoder(w).Encode(&Post{})
+// }
 
-func getPosts(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(posts)
-}
+// func getPosts(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	json.NewEncoder(w).Encode(posts)
+// }
