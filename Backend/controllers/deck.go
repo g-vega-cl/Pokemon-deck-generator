@@ -11,6 +11,7 @@ import (
 // Get the deck from the DB
 func GetDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	var deck models.Deck
 	var cardsBytes []uint8
 	query := r.URL.Query()
@@ -27,6 +28,7 @@ func GetDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 
 func GetDeckList(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	var decks []models.Deck
 	result, err := db.Query("SELECT Id, Name, Type, Image from Deck")
 	if err != nil {

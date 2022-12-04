@@ -192,6 +192,7 @@ func pickSixteenTrainerCards(deck *models.Deck, w http.ResponseWriter) { //Make 
 
 func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	fmt.Println("runnng")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	query := r.URL.Query()
 	deckType := query.Get("type")
 	heroCard := pickHeroCard(deckType)
