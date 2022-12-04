@@ -33,3 +33,11 @@ func (api *Api) GenerateDeck(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("runnng-genDeck")
 	controllers.GenerateDeck(w, r, api.DB)
 }
+
+func (api *Api) GetDeck(w http.ResponseWriter, r *http.Request) {
+	controllers.GetDeck(w, r, api.DB)
+}
+
+func (api *Api) GetDeckList(w http.ResponseWriter, r *http.Request) {
+	controllers.GetDeckList(w, r, api.DB)
+}

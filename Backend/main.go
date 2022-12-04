@@ -20,5 +20,7 @@ func main() {
 
 	db.Router.HandleFunc("/posts", db.GetPosts).Methods("GET")
 	db.Router.HandleFunc("/generate", db.GenerateDeck).Methods("GET")
+	db.Router.HandleFunc("/deck", db.GetDeck).Methods("GET")
+	db.Router.HandleFunc("/decklist", db.GetDeckList).Methods("GET")
 	http.ListenAndServe(":8000", db.Router)
 }
