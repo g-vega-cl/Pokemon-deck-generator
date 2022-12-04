@@ -127,21 +127,8 @@ Deck {
     id: number;
     name: string;
     type: string; "Water" || "Fire" || "....
-    Cards: Card[];
+    Cards: string[]; //Ids of cards, and pick everything from API.
     Image: string; // Taken from the hero pokemon.
-}
-
-Card {
-    id: string;
-    name: string;
-    images: string; // This comes from images.large in the card model in the API
-    supertype: string;
-    type: string;
-}
-
-PokemonCard extends Card { // If it's a pokemon card.
-    subtypes: string; "stage 1" || "stage 2" ||....
-    evolvesFrom?: string;
 }
 
 # Deck generation
@@ -191,7 +178,9 @@ Note: Each API call returns many cards that match the pattern. From the cards th
 
 
 # Defaults
-* If there are no stage 2 pokemon of a type, we will choose from this list:
-    * Fairy: Wigglytuff-GX || Clefable || Mr. Mime || Alolan Ninetales-GX
+* NOTE: The Fairy type did not come out until after the first generation. So I will sneakily exclude it.
+    * In later releases this is the plan:
+    * Fairy: Wigglytuff-GX || Clefable || Alolan Ninetales-GX
         * We will take 4x and 4x of the previous evolution. Then 2x of a random basic fairy. (Check if Mr.Mime is basic.)
+            * Mr.Mime is basic, so pick 2x Mr.Mime.
     * Every other type has stage 2 pokemon available.
