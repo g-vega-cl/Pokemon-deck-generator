@@ -16,7 +16,7 @@ var err error
 
 func main() {
 	db := api.Api{}
-	db.Initialize("root:adminroot@tcp(127.0.0.1:3306)/tutorial")
+	db.Initialize("root:adminroot@tcp(127.0.0.1:3306)/Pokemon-Smalldoor")
 
 	db.Router.HandleFunc("/posts", db.GetPosts).Methods("GET")
 	db.Router.HandleFunc("/generate", db.GenerateDeck).Methods("GET")

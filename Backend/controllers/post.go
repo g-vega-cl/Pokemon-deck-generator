@@ -3,6 +3,8 @@ package controllers
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 	"pokemon-deck-generator-backend/models"
 )
@@ -24,4 +26,23 @@ func GetPosts(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		posts = append(posts, post)
 	}
 	json.NewEncoder(w).Encode(posts)
+}
+
+func CreatePost(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	stmt, err := db.Prepare("INSERT INTO posts(title) VALUES(?)")
+	if err != nil {
+		panic(err.Error())
+	}
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		panic(err.Error())
+	}
+	keyVal := make(map[string]string)
+	json.Unmarshal(body, &keyVal)
+	title := keyVal["title"]
+	_, err = stmt.Exec(title)
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Fprintf(w, "New post was created")
 }

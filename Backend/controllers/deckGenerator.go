@@ -279,12 +279,12 @@ func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	}
 
 	// Now we add 18 good practice trainer cards.
-	// * Quick Ball SSH 179 x4 DONE
-	// * Great Ball CPA 52 x2 DONE
-	// * Pokemon Communication TEU 152 x2 DONE
-	// * Professor's research SSH 178 x4 DONE
-	// * Marnie SSH 169 x2 DONE
-	// * Rare Candy SSH 180 x4 DONE
+	// * Quick Ball SSH 179 x4
+	// * Great Ball CPA 52 x2
+	// * Pokemon Communication TEU 152 x2
+	// * Professor's research SSH 178 x4
+	// * Marnie SSH 169 x2
+	// * Rare Candy SSH 180 x4
 
 	deck.Cards = append(deck.Cards, "swsh1-179", "swsh1-179", "swsh1-179", "swsh1-179", "swsh35-52", "swsh35-52", "hgss1-98", "hgss1-98", "swsh45-60", "swsh45-60", "swsh45-60", "swsh45-60", "swsh35-56", "swsh35-56", "pop5-7", "pop5-7", "pop5-7", "pop5-7")
 
@@ -295,12 +295,55 @@ func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	// NOW WE SHOULD HAVE OUR DECK!!!
 
 	fmt.Println("Deck integrity", checkDeckIntegrity(deck.Cards))
-	fmt.Println("deck final", deck)
+	// fmt.Println("deck final", deck)
+
+	// RETURN DECK
+	addDeckToDatabase(deck, db)
+	json.NewEncoder(w).Encode(deck)
 }
 
+func moreThan4OfACard(cardsIds []string) bool {
+	freq := make(map[string]int)
+	for _, num := range cardsIds {
+		freq[num] = freq[num] + 1
+	}
+	for key, _ := range freq {
+		if freq[key] > 4 && freq[key] != 10 {
+			return true
+		}
+	}
+	return false
+}
 func checkDeckIntegrity(deckCards []string) bool {
 	if len(deckCards) != 60 {
 		return false
 	}
+
+	if moreThan4OfACard(deckCards) {
+		return false
+	}
+
 	return true
+}
+
+func addDeckToDatabase(deck models.Deck, db *sql.DB) {
+	// cardsJson, err := json.Marshal(deck.Cards)
+	// if err != nil {
+	// 	fmt.Println("Error in marshalling deck")
+	// 	panic(err.Error())
+	// }
+
+	dbQuery := fmt.Sprintf("INSERT INTO Deck(Id,Name,Type,Image,Cards) VALUES('%s','%s','%s','%s','%s')", deck.Id, deck.Name, deck.Type, deck.Image, "1")
+	stmt, err := db.Prepare(dbQuery)
+
+	// INSERT INTO posts(id,title) VALUES('2','My post')
+	if err != nil {
+		panic(err.Error())
+	}
+
+	_, err = stmt.Exec()
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println("Added deck to database")
 }
