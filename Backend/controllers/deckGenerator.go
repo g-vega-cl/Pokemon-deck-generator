@@ -327,13 +327,13 @@ func checkDeckIntegrity(deckCards []string) bool {
 }
 
 func addDeckToDatabase(deck models.Deck, db *sql.DB) {
-	// cardsJson, err := json.Marshal(deck.Cards)
-	// if err != nil {
-	// 	fmt.Println("Error in marshalling deck")
-	// 	panic(err.Error())
-	// }
+	cardsJson, err := json.Marshal(deck.Cards)
+	if err != nil {
+		fmt.Println("Error in marshalling deck")
+		panic(err.Error())
+	}
 
-	dbQuery := fmt.Sprintf("INSERT INTO Deck(Id,Name,Type,Image,Cards) VALUES('%s','%s','%s','%s','%s')", deck.Id, deck.Name, deck.Type, deck.Image, "1")
+	dbQuery := fmt.Sprintf("INSERT INTO Deck(Id,Name,Type,Image,Cards) VALUES('%s','%s','%s','%s','%s')", deck.Id, deck.Name, deck.Type, deck.Image, cardsJson)
 	stmt, err := db.Prepare(dbQuery)
 
 	// INSERT INTO posts(id,title) VALUES('2','My post')
