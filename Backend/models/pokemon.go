@@ -16,10 +16,10 @@ type ApiPokemonResponse struct {
 	Data []Card
 }
 type Card struct {
-	Id     string
-	Name   string
-	Images CardImages // This comes from images.large in the card model in the API
-	// Supertype string
+	Id          string
+	Name        string
+	Images      CardImages // This comes from images.large in the card model in the API
+	EvolvesFrom string
 }
 
 type CardImages struct {
