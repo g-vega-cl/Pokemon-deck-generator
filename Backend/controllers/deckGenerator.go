@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"pokemon-deck-generator-backend/models"
 )
@@ -29,5 +30,6 @@ func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 
 	var responseObject models.ApiPokemonResponse
 	json.Unmarshal(responseData, &responseObject)
-	fmt.Println("responseObject.Data", responseObject.Data)
+	heroCard := responseObject.Data[rand.Intn(len(responseObject.Data))]
+	fmt.Println("heroCard", heroCard)
 }
