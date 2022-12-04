@@ -1,11 +1,11 @@
 package models
 
 type Deck struct {
-	Id     string
-	Name   string
-	Type   string
-	Images string
-	Cards  []string
+	Id    string
+	Name  string
+	Type  string
+	Image string
+	Cards []string
 }
 
 type DeckList struct {
@@ -16,9 +16,9 @@ type ApiPokemonResponse struct {
 	Data []Card
 }
 type Card struct {
-	Id   string
-	Name string
-	// Images    CardImages // This comes from images.large in the card model in the API
+	Id     string
+	Name   string
+	Images CardImages // This comes from images.large in the card model in the API
 	// Supertype string
 }
 
