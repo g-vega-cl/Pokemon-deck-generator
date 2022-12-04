@@ -123,6 +123,21 @@ DeckList {
     DeckId: number[];
 }
 
+
+Card {
+    id: string;
+    name: string;
+    images: string; // This comes from images.large in the card model in the API
+    supertype: string;
+    type: string;
+}
+
+PokemonCard extends Card { // If it's a pokemon card.
+    subtypes: string; "stage 1" || "stage 2" ||....
+    evolvesFrom?: string;
+}
+
+
 Deck {
     id: number;
     name: string;
@@ -153,7 +168,8 @@ Note: Each API call returns many cards that match the pattern. From the cards th
 5. Add 2 snorlax VIV 131 to our deck.
 
 6. Add 4 random basic pokemon to our deck. - THAT ARE NOT THE ONE WE ALREADY HAVE - Couldn't find a way to exclude from API itself, so I decided to compare the pokemon name of the random selected card against the basic cards I have already.
-    https://api.pokemontcg.io/v2/cards?q=supertype:Pokemon nationalPokedexNumbers:[1 TO 151] subtypes:"Basic" types:"Fairy"
+    * https://api.pokemontcg.io/v2/cards?q=supertype:Pokemon nationalPokedexNumbers:[1 TO 151] subtypes:"Basic" types:"Fairy"
+    * I could run this 4 times and have 4 different basic cards. But for the sake of not overloading the API and performance I'll choose one card four times.
 
 7. Add 10 energy cards to the deck.
 
@@ -163,13 +179,12 @@ Note: Each API call returns many cards that match the pattern. From the cards th
 
 10. Now we have 44 cards in our deck.
 
-11. Add x18 random trainer cards.
+11. Add x16 random trainer cards.
     * Doing a real random search is difficult because of the size of the data in the API and because of the string ID's
     * To simulate randomness, I will use a random letter of the alphabet and random order (`name` or `-name`) and pick a random card from the first 25 cards.
         * https://api.pokemontcg.io/v2/cards?pageSize=50&q=supertype:Trainer name:w*&orderBy=-name
     * Check if we already have the card by comparing the Id of the card: swsh4-161, Trainer cards don't have the same names and different ID's like some pokemon cards.
     * Add x4 of the card.
-    * Do this 4 times and the fifth time save the query and add another card from the 4th query.
     * If there are no valid cards, do the query again.
 
 12. Now we have our 60 cards. SUCCESS!
