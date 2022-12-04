@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 	"pokemon-deck-generator-backend/controllers"
 
@@ -26,4 +27,9 @@ func (api *Api) Initialize(dbstring string) {
 
 func (api *Api) GetPosts(w http.ResponseWriter, r *http.Request) {
 	controllers.GetPosts(w, r, api.DB)
+}
+
+func (api *Api) GenerateDeck(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("runnng-genDeck")
+	controllers.GenerateDeck(w, r, api.DB)
 }

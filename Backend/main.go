@@ -19,5 +19,6 @@ func main() {
 	db.Initialize("root:adminroot@tcp(127.0.0.1:3306)/tutorial")
 
 	db.Router.HandleFunc("/posts", db.GetPosts).Methods("GET")
+	db.Router.HandleFunc("/generate", db.GenerateDeck).Methods("GET")
 	http.ListenAndServe(":8000", db.Router)
 }
