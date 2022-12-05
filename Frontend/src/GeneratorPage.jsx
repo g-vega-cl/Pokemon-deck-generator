@@ -8,16 +8,16 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Grid from "@mui/material/Grid"; // Grid version 1
 import Button from "@mui/material/Button";
-import pikachuRepeat from './images/pikachu-background-navbar.png';
-import sideBackground from './images/pokemon-sides-wallpaper.jpeg';
 import pikachuYellow from './images/pikachu-yellow-wallpaper.png';
 import DeckTypeSelect from "./components/DeckTypeSelect.tsx";
+import TextField from '@mui/material/TextField';
 
 const GeneratorPage = () => {
-  const [username, setUsername] = useState("Test-user");
+  const [deckName, setDeckName] = useState("");
   const [queryUsername, setQueryUsername] = useState("Test-user"); // This is not good, but time.
+  const [enableGenerateDeckQuery, setEnableGenerateDeckQuery] = useState("Test-user"); // This is not good, but time.
 
-  // This should be on it's own file, I'll leave it here if I don't have time.
+  // If this is loading, then get to another site, once it's done, run another function that sends us to the deck seeing page
   const {
     isLoading: isLoadingPokemon,
     data: pokemon,
@@ -28,7 +28,7 @@ const GeneratorPage = () => {
     queryFn: async () => {
       return axios
         .get(`http://localhost:8000/decklist`)
-        .then((res) => res.data);
+        .then((res) => res.data)
     },
     refetchOnWindowFocus: false,
     enabled: false,
@@ -45,8 +45,9 @@ const GeneratorPage = () => {
       <Navbar />
       <Grid container spacing={2} style={{backgroundColor:"#efd64b", margin:'auto', width:'50%'}}>
         <Grid xs={24} item={true}>
+          <TextField id="deck-name-outlined-basic" label="Type the name of your deck" variant="outlined" value={deckName} onChange={(e) => setDeckName(e.target.value)} style={{marginBottom:'20px', width:'100%'}}/>
           <DeckTypeSelect />
-          <Button variant="contained" style={{ width: "100%", marginTop:'30px', height:'50px' }}>
+          <Button variant="contained" style={{ width: "100%", marginTop:'30px', height:'50px' }} >
             Generate deck
           </Button>
         </Grid>
