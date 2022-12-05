@@ -56,7 +56,7 @@ const DeckDetailsPage = ({navbarTabValue, setNavbarTabValue}:IDeckDetailsPage) =
     queryFn: async () => {
       const cards = {} as any; // TODO // CREATE THE MODEL.
       const fetchedCardIds = [] as string[];
-      for (const cardId of deck.Cards) {
+      for (const cardId of deck.Cards) { // We don't use Promise.all because the pokemon api thorttles us.
         if (fetchedCardIds.includes(cardId)) {
           continue;
         }

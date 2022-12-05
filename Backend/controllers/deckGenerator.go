@@ -140,7 +140,13 @@ func pickEnergyCard(deckType string) (string, error) {
 func pickRandomTrainerCard() (models.Card, error) {
 	charset := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	randomLetter := string(charset[rand.Intn(len(charset))])
-	requestString := "https://api.pokemontcg.io/v2/cards?q=supertype:Trainer name:" + randomLetter + "*&orderBy=-name"
+	orderBy := []string{
+		"-",
+		"",
+	}
+	// 50% Chance
+	side := orderBy[rand.Intn(len(orderBy))]
+	requestString := "https://api.pokemontcg.io/v2/cards?q=supertype:Trainer name:" + randomLetter + "*&orderBy=" + side + "name&pageSize=25"
 	response, err := http.Get(requestString)
 
 	if err != nil {
@@ -167,8 +173,9 @@ func pickSixteenTrainerCards(deck *models.Deck, w http.ResponseWriter) { //Make 
 	for i := 0; i < 4; i++ {
 		ok := true
 		var trainerCard models.Card
+		loading := "xxxxx" + strings.Repeat("x", i)
 		for ok {
-			fmt.Println("Loop 2 ok")
+			fmt.Println(loading)
 			var err error
 			trainerCard, err = pickRandomTrainerCard()
 
@@ -191,7 +198,7 @@ func pickSixteenTrainerCards(deck *models.Deck, w http.ResponseWriter) { //Make 
 }
 
 func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-	fmt.Println("runnng")
+	fmt.Println("x")
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	query := r.URL.Query()
 	deckType := query.Get("type")
@@ -244,7 +251,7 @@ func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	ok := true
 	var basicCard models.Card
 	for ok {
-		fmt.Println("Loop ok")
+		fmt.Println("xx")
 		var err error
 		basicCard, err = pickRandomBasicPokemon(deckType)
 
