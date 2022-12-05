@@ -1,5 +1,7 @@
 # Pokemon-deck-generator
- We only expect this project to run on your local machine. 
+We only expect this project to run on your local machine. 
+    go to Backend folder and run `go run main.go`
+    go to Frontend folder and run `npm start`
 
 For this assessment, we would like you to build a deck generator of pokemon cards. In this assessment, please consider these rules for what a "complete" deck is:
 A deck should contain exactly 60 cards
