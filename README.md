@@ -75,6 +75,16 @@ A button to only use the original 151 would be fun. <- For version 1, we will on
 
 * For next release I can add sharing functionality.
 
+* For the next release a state manager will be implemented
+
+* There are components like DeckCard and PokemonCard that are reallty similar. But I will keep them separate because it's easier to extend in the future.
+
+* There are a few interfaced that are missing in typescript. They are tech debt and must be created.
+
+* If the user names it's deck something really long, the cards break. Next release fix.
+
+* At the moment, in the navbar: Deck List and Deck Details are the same page. If you click the deck details tab in 
+
 
 # Pokemon rules:
 

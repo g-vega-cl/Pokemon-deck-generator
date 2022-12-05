@@ -11,6 +11,7 @@ import OpacityIcon from '@mui/icons-material/Opacity';
 import SpaIcon from '@mui/icons-material/Spa';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import BoltIcon from '@mui/icons-material/Bolt';
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
 import { Grid } from "@mui/material";
 
@@ -21,6 +22,7 @@ export enum PokemonTypes {
   LIGHTNING = "Lightning",
   PSYCHIC = "Psychic",
   FIGHTING = "Fighting",
+  ANY = "Any",
 }
 
 interface ITypeMenuItem {
@@ -44,9 +46,10 @@ const TypeMenuGrid = ({type, children}: ITypeMenuItem) => {
 interface IDeckTypeSelect {
   deckType: string;
   setDeckType: React.Dispatch<string>;
+  allowAny?: boolean;
 }
 
-const DeckTypeSelect = ({deckType, setDeckType} : IDeckTypeSelect) => {
+const DeckTypeSelect = ({deckType, setDeckType, allowAny = false} : IDeckTypeSelect) => {
 
   const handleChange = (event: SelectChangeEvent) => {
     setDeckType(event.target.value as string);
@@ -87,6 +90,16 @@ const DeckTypeSelect = ({deckType, setDeckType} : IDeckTypeSelect) => {
           <MenuItem value={PokemonTypes.LIGHTNING}>
             <TypeMenuGrid type={PokemonTypes.LIGHTNING}> <BoltIcon sx={{ height: 25, color:'black' }} /> </TypeMenuGrid>
           </MenuItem>
+
+
+          {allowAny && 
+            (
+              <MenuItem value={"Any"}>
+                <TypeMenuGrid type={"Any"}> <CatchingPokemonIcon sx={{ height: 25, color:'red' }} /> </TypeMenuGrid>
+              </MenuItem>
+            )
+          }
+          
         </Select>
       </FormControl>
     </Box>

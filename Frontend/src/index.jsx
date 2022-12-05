@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GeneratorPage from "./pages/GeneratorPage";
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
@@ -10,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Navbar from "./components/Navbar.tsx";
 import DeckDetailsPage from "./pages/DeckDetailsPage.tsx";
+import App from "./App.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,16 +29,7 @@ ReactDOM.render(
       client={queryClient}
       persistOptions={{ persister }}
     >
-      <Router>
-        <Box sx={{overflowX:"hidden"}}>
-          <Navbar />
-          <Routes>
-            <Route exact path="/decks/:id" element={<DeckDetailsPage />} />
-            <Route exact path="/" element={<GeneratorPage />} />
-          </Routes>
-          <ReactQueryDevtools initialIsOpen />
-        </Box>
-      </Router>
+      <App />
     </PersistQueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

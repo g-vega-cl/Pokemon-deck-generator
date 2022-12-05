@@ -31,7 +31,7 @@ const GeneratorPage = () => {
   }
 
   return (
-    <div style={{ margin: "auto", height:"100vh", backgroundImage:`url(${pikachuYellow})`, backgroundSize:'cover'}}>
+    <div style={{ margin: "auto", height:"100vh", backgroundImage:`url(${pikachuYellow})`, backgroundSize:'cover', backgroundColor:"#efd64b"}}>
       <Grid container spacing={2} style={{backgroundColor:"#efd64b", margin:'auto', width:'50%'}}>
         <Grid xs={24} item={true}>
           <TextField id="deck-name-outlined-basic" label="Type the name of your deck" variant="outlined" value={deckName} onChange={(e) => setDeckName(e.target.value)} style={{marginBottom:'20px', width:'100%'}}/>
