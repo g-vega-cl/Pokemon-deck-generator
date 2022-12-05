@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GeneratorPage from "./GeneratorPage";
+import GeneratorPage from "./pages/GeneratorPage";
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import "./css/global.scss";
 import { Box } from "@mui/system";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Navbar from "./components/Navbar.tsx";
+import DeckDetailsPage from "./pages/DeckDetailsPage.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,10 +30,13 @@ ReactDOM.render(
       persistOptions={{ persister }}
     >
       <Router>
-        <Box>
+        <Box sx={{overflowX:"hidden"}}>
+          <Navbar />
           <Routes>
-            <Route exact path="/" element={<GeneratorPage />}></Route>
+            <Route exact path="/decks/:id" element={<DeckDetailsPage />} />
+            <Route exact path="/" element={<GeneratorPage />} />
           </Routes>
+          <ReactQueryDevtools initialIsOpen />
         </Box>
       </Router>
     </PersistQueryClientProvider>

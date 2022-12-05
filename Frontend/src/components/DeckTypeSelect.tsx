@@ -41,11 +41,15 @@ const TypeMenuGrid = ({type, children}: ITypeMenuItem) => {
   );
 };
 
-const DeckTypeSelect = () => {
-  const [type, setType] = React.useState("");
+interface IDeckTypeSelect {
+  deckType: string;
+  setDeckType: React.Dispatch<string>;
+}
+
+const DeckTypeSelect = ({deckType, setDeckType} : IDeckTypeSelect) => {
 
   const handleChange = (event: SelectChangeEvent) => {
-    setType(event.target.value as string);
+    setDeckType(event.target.value as string);
   };
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -56,7 +60,7 @@ const DeckTypeSelect = () => {
         <Select
           labelId="deck-type-simple-select-label"
           id="deck-type-simple-select"
-          value={type}
+          value={deckType}
           label="Select deck type"
           onChange={handleChange}
         >
@@ -81,7 +85,7 @@ const DeckTypeSelect = () => {
           </MenuItem>
 
           <MenuItem value={PokemonTypes.LIGHTNING}>
-            <TypeMenuGrid type={PokemonTypes.LIGHTNING}> <BoltIcon sx={{ height: 25, color:'#efd64b' }} /> </TypeMenuGrid>
+            <TypeMenuGrid type={PokemonTypes.LIGHTNING}> <BoltIcon sx={{ height: 25, color:'black' }} /> </TypeMenuGrid>
           </MenuItem>
         </Select>
       </FormControl>

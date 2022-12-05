@@ -71,6 +71,11 @@ Add a dropdown that allows you to choose the type of pokemon. - This release.
 
 A button to only use the original 151 would be fun. <- For version 1, we will only use the first 151 pokemon. Go Gen 1.
 
+* I have to change the generate GET to POST
+
+* For next release I can add sharing functionality.
+
+
 # Pokemon rules:
 
 * With the exception of energy, you can only have 4 of the same card in the deck.
@@ -202,3 +207,4 @@ Note: Each API call returns many cards that match the pattern. From the cards th
     * Every other type has stage 2 pokemon available.
 
 * The following types were excluded in the frontend: "Fairy", "Dragon", "Metal", "Darkness", "Colorless" because they were either introduced after the first generation of pokemon or there are not enough pokemon available to build viable decks with the types.
+

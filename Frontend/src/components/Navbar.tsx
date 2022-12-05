@@ -7,7 +7,7 @@ interface LinkTabProps {
   href?: string;
 }
 
-function LinkTab(props: LinkTabProps) {
+function LinkTab(props: LinkTabProps) { // TODO // Move to arrow function for consistency
   return (
     <Tab
       component="a"
@@ -19,7 +19,7 @@ function LinkTab(props: LinkTabProps) {
   );
 }
 
-function Navbar() {
+function Navbar() { // TODO // Move to arrow function for consistency
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
