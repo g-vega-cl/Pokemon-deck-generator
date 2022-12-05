@@ -7,6 +7,7 @@ import DeckTypeSelect, { PokemonTypes } from "../components/DeckTypeSelect.tsx";
 import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
 
+
 const GeneratorPage = () => {
   const [deckName, setDeckName] = useState("");
   const [deckType, setDeckType] = useState(PokemonTypes.FIRE);
@@ -18,13 +19,9 @@ const GeneratorPage = () => {
     setIsGeneratingDeck(true);
     try {
       const response = await axios.get(`http://localhost:8000/generate?type=${deckType}&name=${deckName}`)
-      console.log("Getting response", response);
       const deck = response.data;
-      console.log("GENERATED DECK", deck);
-      navigate(`/decks/${deck.Id}`)
+      navigate(`/decks/${deck.Id}`);
     } catch (error) {
-      console.log("ERROR GENERATING DECK", error);
-      console.error("ERROR GEN DECK ", error);
       setIsGeneratingDeck(false);
       setGeneratingDeckError(true); // TODO // Add modal where this is turned to false.
     }

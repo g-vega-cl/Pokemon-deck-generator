@@ -21,6 +21,9 @@ const DeckListPage = ({ navbarTabValue, setNavbarTabValue }: IDeckListPage) => {
             setNavbarTabValue(1);
             alert("Select a deck to inspect"); //Alert is bad practice. Replace with a modal // TODO
         }
+        if(navbarTabValue === 1){
+            setNavbarTabValue(1);
+        }
     },[navbarTabValue])
     
     // TODO // FILTER BY TYPE

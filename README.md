@@ -83,7 +83,11 @@ A button to only use the original 151 would be fun. <- For version 1, we will on
 
 * If the user names it's deck something really long, the cards break. Next release fix.
 
-* At the moment, in the navbar: Deck List and Deck Details are the same page. If you click the deck details tab in 
+* At the moment, in the navbar: Deck List and Deck Details are the same page. If you click the deck details tab, you will see an alert.
+
+* Setting up tests is in progress. The code will be tested by next release. This is tech debt.
+
+* A loading page for when a deck is being generated will be added in the next release.
 
 
 # Pokemon rules:

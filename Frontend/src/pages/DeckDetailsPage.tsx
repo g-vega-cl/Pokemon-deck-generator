@@ -16,12 +16,8 @@ const fetchPokemonCardFromApi = async (cardId) => {
   return response;
 };
 
-interface IDeckDetailsPage {
-  navbarTabValue: number;
-}
 
-
-const DeckDetailsPage = ({navbarTabValue}: IDeckDetailsPage) => {
+const DeckDetailsPage = () => {
   let { id } = useParams();
 
   const {
