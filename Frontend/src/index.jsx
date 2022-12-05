@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Page from "./Page";
+import GeneratorPage from "./GeneratorPage";
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
 import "./css/global.scss";
+import { Box } from "@mui/system";
 
 const queryClient = new QueryClient({defaultOptions: {
     queries: {
@@ -23,7 +24,9 @@ ReactDOM.render(
       client={queryClient}
       persistOptions={{ persister }}
     >
-      <Page />
+      <Box>
+        <GeneratorPage />
+      </Box>
     </PersistQueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

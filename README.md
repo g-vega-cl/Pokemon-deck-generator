@@ -62,6 +62,7 @@ https://docs.pokemontcg.io/
         * Random (x16)
 
 
+* In the future I want to add css libraries like tailwind to make styling easier and consistent.
 # NOTES:
 (I could delete this section.)
 Add a button that says: "Use rare candy", which reduces the number of stage 1 (middle evolution) pokemon cards to 2 (from 4). And adds 4 rare candy cards. - Next release.
@@ -199,3 +200,5 @@ Note: Each API call returns many cards that match the pattern. From the cards th
         * We will take 4x and 4x of the previous evolution. Then 2x of a random basic fairy. (Check if Mr.Mime is basic.)
             * Mr.Mime is basic, so pick 2x Mr.Mime.
     * Every other type has stage 2 pokemon available.
+
+* The following types were excluded in the frontend: "Fairy", "Dragon", "Metal", "Darkness", "Colorless" because they were either introduced after the first generation of pokemon or there are not enough pokemon available to build viable decks with the types.
