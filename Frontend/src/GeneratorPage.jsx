@@ -46,7 +46,7 @@ const GeneratorPage = () => {
       <Grid container spacing={2} style={{backgroundColor:"#efd64b", margin:'auto', width:'50%'}}>
         <Grid xs={24} item={true}>
           <DeckTypeSelect />
-          <Button variant="contained" style={{ width: "100%", marginTop:'30px' }}>
+          <Button variant="contained" style={{ width: "100%", marginTop:'30px', height:'50px' }}>
             Generate deck
           </Button>
         </Grid>
