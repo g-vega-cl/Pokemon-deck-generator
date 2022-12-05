@@ -16,9 +16,20 @@ const fetchPokemonCardFromApi = async (cardId) => {
   return response;
 };
 
+interface IDeckDetailsPage {
+  setNavbarTabValue: React.Dispatch<number>;
+  navbarTabValue: number;
+}
 
-const DeckDetailsPage = () => {
+
+const DeckDetailsPage = ({navbarTabValue, setNavbarTabValue}:IDeckDetailsPage) => {
   let { id } = useParams();
+
+  useEffect(() => {
+    if(navbarTabValue === 0 || navbarTabValue === 1){ // TODO // This should be managed with global state. Next release
+        setNavbarTabValue(2);
+    }
+},[navbarTabValue])
 
   const {
     isLoading: isLoadingDeck,

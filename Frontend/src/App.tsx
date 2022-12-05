@@ -19,7 +19,7 @@ const App = () => {
         />
         <Routes>
             <Route path="/decks/list" element={<DeckListPage navbarTabValue={navbarTabValue} setNavbarTabValue={setNavbarTabValue} />} />
-            <Route path="/decks/:id" element={<DeckDetailsPage navbarTabValue={navbarTabValue} />} />
+            <Route path="/decks/:id" element={<DeckDetailsPage navbarTabValue={navbarTabValue} setNavbarTabValue={setNavbarTabValue} />} />
             <Route path="/" element={<GeneratorPage />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen />

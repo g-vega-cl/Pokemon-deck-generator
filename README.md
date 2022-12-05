@@ -91,6 +91,8 @@ A button to only use the original 151 would be fun. <- For version 1, we will on
 
 * A loading page for when a deck is being generated will be added in the next release.
 
+* The data is cached, so you don't need to wait for data to be re-fetched.
+
 
 # Pokemon rules:
 
