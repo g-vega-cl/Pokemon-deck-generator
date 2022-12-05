@@ -222,3 +222,8 @@ Note: Each API call returns many cards that match the pattern. From the cards th
 
 * The following types were excluded in the frontend: "Fairy", "Dragon", "Metal", "Darkness", "Colorless" because they were either introduced after the first generation of pokemon or there are not enough pokemon available to build viable decks with the types.
 
+
+# Database structure:
+We have a MySQL database called "Pokemon-Smalldoor".
+This database contains a table called "Deck" which has the properties: Id: VARCHAR(100), Name: VARCHAR(100) , Type: VARCHAR(100), Image: VARCHAR(100), Cards: json
+
