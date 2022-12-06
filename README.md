@@ -1,5 +1,7 @@
 # Pokemon-deck-generator
 
+[Preview video](https://drive.google.com/file/d/1sjrnCzugxzX4aWUXVjxE-_YWe6bChRT2/view?usp=share_link)
+
 We only expect this project to run on your local machine.
 1. Set up a MySQL database with the following properties:
 	* name = Pokemon-Smalldoor
