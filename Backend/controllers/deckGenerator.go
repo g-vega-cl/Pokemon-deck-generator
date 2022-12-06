@@ -301,9 +301,7 @@ func GenerateDeck(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	pickSixteenTrainerCards(&deck, w)
 
 	// NOW WE SHOULD HAVE OUR DECK!!!
-
 	fmt.Println("Deck integrity", checkDeckIntegrity(deck.Cards))
-	// fmt.Println("deck final", deck)
 
 	// RETURN DECK
 	addDeckToDatabase(deck, db)

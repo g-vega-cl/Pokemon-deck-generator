@@ -24,11 +24,6 @@ func (api *Api) Initialize(dbstring string) {
 
 	api.Router = mux.NewRouter()
 }
-
-func (api *Api) GetPosts(w http.ResponseWriter, r *http.Request) {
-	controllers.GetPosts(w, r, api.DB)
-}
-
 func (api *Api) GenerateDeck(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("runnng-genDeck")
 	controllers.GenerateDeck(w, r, api.DB)
