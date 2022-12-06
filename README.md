@@ -107,13 +107,13 @@ The Pokemon API to use is this one: https://docs.Pokemontcg.io/
 		* This is the homepage, it has a dropdown to choose the type of the deck, an input for the deck name, and a button to generate the deck.
 		* Once you click the "Generate" button, it will push you to the deck details page (`/decks/:id`)and show you the new deck.
 
-* `/decks/:Id`
-	* This page will show the deck details.
-	* It contains a list of all the cards in the deck, with their names, images and other properties.
+	* `/decks/:Id`
+		* This page will show the deck details.
+		* It contains a list of all the cards in the deck, with their names, images and other properties.
 
-* `/decks/list`
-	* This page has the list of decks.
-	* It has a dropdown at the top to filter decks by type.
+	* `/decks/list`
+		* This page has the list of decks.
+		* It has a dropdown at the top to filter decks by type.
 
 # Deck generation
 
