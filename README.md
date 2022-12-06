@@ -78,7 +78,7 @@ The Pokemon API to use is this one: https://docs.Pokemontcg.io/
 * A loading page for when a deck is being generated will be added.
 
 
-## For coders:
+## For developers:
 * In the future I want to add css libraries like tailwind to make styling easier and consistent.
 * Research if GET or POST is better for the "Generate deck" api route. 
 * Use a global state manager like redux or react-context
@@ -88,6 +88,7 @@ The Pokemon API to use is this one: https://docs.Pokemontcg.io/
 * Set up testing.
 * Optimize the times to generate decks.
 	* This will likely include saving card details in our database and bypassing the Pokemon Api.
+* Add docker compose to the whole repo so the backend, frontend and database can be run using `docker-compose up`
 # Design
 * This generator will follow conventions for a good deck. This means that the deck composition will always follow the good practice structure detailed above.
 * This site only uses the first generation of Pokemon to generate a deck.
