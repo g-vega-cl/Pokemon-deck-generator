@@ -18,14 +18,15 @@ func (api *Api) Initialize(dbstring string) {
 	var err error
 	api.DB, err = sql.Open("mysql", dbstring)
 	if err != nil {
+		fmt.Println()
 		panic(err.Error())
 	}
-	// defer db.DB.Close()
 
 	api.Router = mux.NewRouter()
 }
+
 func (api *Api) GenerateDeck(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("runnng-genDeck")
+	fmt.Println("Generating deck...")
 	controllers.GenerateDeck(w, r, api.DB)
 }
 
