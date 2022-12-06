@@ -15,6 +15,6 @@ func main() {
 	api.Router.HandleFunc("/generate", api.GenerateDeck).Methods("GET") // TODO // Check the best method for this
 	api.Router.HandleFunc("/deck", api.GetDeck).Methods("GET")
 	api.Router.HandleFunc("/decklist", api.GetDeckList).Methods("GET")
-	http.ListenAndServe(":8000", api.Router)
 	fmt.Println("Listening in port 8000")
+	http.ListenAndServe(":8000", api.Router)
 }

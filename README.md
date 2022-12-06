@@ -1,9 +1,14 @@
 # Pokemon-deck-generator
 
 We only expect this project to run on your local machine.
-1. go to Backend folder and run `go run main.go`
+1. Set up a MySQL database with the following properties:
+	* name = Pokemon-Smalldoor
+	* username = root
+	* Password = adminroot
+	* URL:PORT = 127.0.0.1:3306
+2. go to Backend folder and run `go run main.go`
 	* If the server is not listening, try seeing if you have an instance running on port 8000.
-2. go to Frontend folder and run `npm start`
+3. go to Frontend folder and run `npm start`
 
 ---
 
