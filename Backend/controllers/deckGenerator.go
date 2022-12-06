@@ -146,7 +146,7 @@ func pickRandomTrainerCard() (models.Card, error) {
 	}
 	// 50% Chance
 	side := orderBy[rand.Intn(len(orderBy))]
-	requestString := "https://api.pokemontcg.io/v2/cards?q=supertype:Trainer name:" + randomLetter + "*&orderBy=" + side + "name&pageSize=25"
+	requestString := "https://api.pokemontcg.io/v2/cards?q=supertype:Trainer name:" + randomLetter + "*&orderBy=" + side + "name&pageSize=20"
 	response, err := http.Get(requestString)
 
 	if err != nil {
