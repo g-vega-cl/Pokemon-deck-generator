@@ -8,7 +8,7 @@ interface LinkTabProps {
   href: string;
 }
 
-function LinkTab(props: LinkTabProps) { // TODO // Move to arrow function for consistency // I could also standarize the way the children props are used.
+const LinkTab = (props: LinkTabProps) => { // TODO // standarize the way the children props are used.
   const navigate = useNavigate();
   return (
     <Tab
@@ -27,7 +27,7 @@ interface INavbar {
   setNavbarTabValue: React.Dispatch<number>;
 }
 
-function Navbar({navbarTabValue, setNavbarTabValue} :INavbar) { // TODO // Move to arrow function for consistency
+const Navbar = ({navbarTabValue, setNavbarTabValue} :INavbar) => {
   
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setNavbarTabValue(newValue);

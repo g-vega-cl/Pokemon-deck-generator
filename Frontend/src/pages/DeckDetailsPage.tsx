@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ErrorPage from "../components/ErrorPage.tsx";
+import LoadingPage from "../components/LoadingPage.tsx";
 import PokemonCard from "../components/PokemonCard.tsx";
-import pikachuWorking from "../images/pikachu-mailman-work.gif";
-import pikachuBall from "../images/pikachu-pokeball-loop.gif";
 
 const fetchPokemonCardFromApi = async (cardId) => {
   const url = `https://api.pokemontcg.io/v2/cards?q=!id:${cardId}`;
@@ -48,13 +48,13 @@ const DeckDetailsPage = ({navbarTabValue, setNavbarTabValue}:IDeckDetailsPage) =
   });
 
   const {
-    isLoading: isLoadingDeckCards,
-    error: isGetDeckCardsError,
-    data: deckCards,
+    isLoading: isLoadingPokemonCards,
+    error: isGetPokemonCardsError,
+    data: pokemonCards,
   } = useQuery({
-    queryKey: [`deckCards`, id],
+    queryKey: [`pokemonCards`, id],
     queryFn: async () => {
-      const cards = {} as any; // TODO // CREATE THE MODEL.
+      const cards = {} as any; // TODO // CREATE THE CARDS MODEL. It is the one from the pokemon API.
       const fetchedCardIds = [] as string[];
       for (const cardId of deck.Cards) { // We don't use Promise.all because the pokemon api thorttles us.
         if (fetchedCardIds.includes(cardId)) {
@@ -72,37 +72,27 @@ const DeckDetailsPage = ({navbarTabValue, setNavbarTabValue}:IDeckDetailsPage) =
     refetchIntervalInBackground: false,
   });
 
-  if(isGetDeckCardsError) {
+  if(isGetPokemonCardsError) {
     return(
-      <div style={{margin:'20px', width:'70vw', height:'500px'}}>
-        <Typography gutterBottom variant="body1" component="div">
-          There has been an error fetching your data. Please try again later.
-        </Typography>
-        <img src={pikachuBall} />
-      </div>
+      <ErrorPage />
     )
   }
 
   return (
     <>
     <Grid container spacing={4} sx={{margin:'10px'}}>
-      {deckCards &&
-        Object.keys(deckCards).length > 0 &&
+      {pokemonCards &&
+        Object.keys(pokemonCards).length > 0 &&
         deck.Cards.map((cardId, index) => {
           return (
             <Grid xs={4} item={true} key={`${index}-${cardId}`}>
-              <PokemonCard pokemonCard={deckCards[cardId]} />
+              <PokemonCard pokemonCard={pokemonCards[cardId]} />
             </Grid>
           );
         })}
     </Grid>
-      {isLoadingDeckCards && (
-        <div style={{margin:'20px', width:'70vw', height:'500px'}}>
-          <Typography gutterBottom variant="body1" component="div">
-            Pikachu is trying his best to fetch your cards. Please wait.
-          </Typography>
-          <img src={pikachuWorking} />
-        </div>
+      {isLoadingPokemonCards && (
+        <LoadingPage />
       )}
     </>
   );

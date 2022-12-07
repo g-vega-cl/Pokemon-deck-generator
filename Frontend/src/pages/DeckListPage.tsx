@@ -2,10 +2,11 @@ import { Grid } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import DeckCard from "../components/DeckCard.tsx";
 import DeckTypeSelect from "../components/DeckTypeSelect.tsx";
-import PokemonCard from "../components/PokemonCard.tsx";
+import ErrorPage from "../components/ErrorPage.tsx";
+import LoadingPage from "../components/LoadingPage.tsx";
+import { IDeckCard } from "../models/pokemon";
 
 
 interface IDeckListPage {
@@ -26,7 +27,6 @@ const DeckListPage = ({ navbarTabValue, setNavbarTabValue }: IDeckListPage) => {
         }
     },[navbarTabValue])
     
-    // TODO // FILTER BY TYPE
     const {
         isLoading: isLoadingDeckList,
         data: deckList,
@@ -43,6 +43,12 @@ const DeckListPage = ({ navbarTabValue, setNavbarTabValue }: IDeckListPage) => {
         refetchIntervalInBackground: false,
     });
 
+    if(isGetDeckListError){
+        return(
+            <ErrorPage />
+        )
+    }
+
     return (
         <>
         <div style={{width:"80%", marginLeft:'5px', marginTop:'20px', marginBottom:'20px' }}>
@@ -51,16 +57,19 @@ const DeckListPage = ({ navbarTabValue, setNavbarTabValue }: IDeckListPage) => {
         <Grid container spacing={3}>
         {deckList &&
             deckList.length > 0 &&
-            deckList.map((card, index) => {
-                if(deckType === card.Type || deckType === "Any"){
+            deckList.map((deckCard: IDeckCard, index) => {
+                if(deckType === deckCard.Type || deckType === "Any"){
                     return (
-                        <Grid xs={3} item={true} key={`${index}-${card.Id}`}>
-                            <DeckCard deckCard={card} setNavbarTabValue={setNavbarTabValue}/>
+                        <Grid xs={3} item={true} key={`${index}-${deckCard.Id}`}>
+                            <DeckCard deckCard={deckCard} setNavbarTabValue={setNavbarTabValue}/>
                         </Grid>
                     );
                 }
             })}
         </Grid>
+        {isLoadingDeckList && (
+            <LoadingPage />
+        )}
         </>
     );
 };

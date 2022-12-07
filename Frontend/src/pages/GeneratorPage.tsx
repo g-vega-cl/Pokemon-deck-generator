@@ -6,6 +6,8 @@ import pikachuYellow from '../images/pikachu-yellow-wallpaper.png';
 import DeckTypeSelect, { PokemonTypes } from "../components/DeckTypeSelect.tsx";
 import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "../components/LoadingPage.tsx";
+import ErrorPage from "../components/ErrorPage.tsx";
 
 
 const GeneratorPage = () => {
@@ -23,7 +25,7 @@ const GeneratorPage = () => {
       navigate(`/decks/${deck.Id}`);
     } catch (error) {
       setIsGeneratingDeck(false);
-      setGeneratingDeckError(true); // TODO // Add modal where this is turned to false.
+      setGeneratingDeckError(true);
     }
   }
 
@@ -36,9 +38,8 @@ const GeneratorPage = () => {
           <Button variant="contained" style={{ width: "100%", marginTop:'30px', height:'50px' }} onClick={handleGenerateDeck}>
             Generate deck
           </Button>
-          {/* TODO, make error and loading components pretty */}
-          {isGeneratingDeck && <div> We are generating your deck...</div>} 
-          {generatingDeckError && <div> There has been an error while generating your deck</div>}
+          {isGeneratingDeck && <LoadingPage />} 
+          {generatingDeckError && <ErrorPage />}
         </Grid>
       </Grid>
     </div>

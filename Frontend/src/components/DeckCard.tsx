@@ -5,8 +5,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { IDeckCard } from "../models/pokemon";
 
-const DeckCard = ({ deckCard, setNavbarTabValue }) => { // TODO // Add deck card interface
+export interface IComponentDeckCard {
+    deckCard: IDeckCard;
+    setNavbarTabValue: React.Dispatch<number>;
+}
+
+const DeckCard = ({ deckCard, setNavbarTabValue }: IComponentDeckCard) => {
     const navigate = useNavigate();
     const handleClick = () => {
         setNavbarTabValue(2);

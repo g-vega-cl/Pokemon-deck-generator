@@ -8,10 +8,6 @@ type Deck struct {
 	Cards []string
 }
 
-type DeckList struct {
-	DeckId []string
-}
-
 type ApiPokemonResponse struct {
 	Data []Card
 }

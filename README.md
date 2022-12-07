@@ -83,7 +83,6 @@ The Pokemon API to use is this one: https://docs.Pokemontcg.io/
 * At the moment in the Navbar: Deck List and Deck Details are the same page. If you click the deck details tab, you will see an alert.
 	* A modal will be created to avoid using the alert
 * Shorter times to generate decks.
-* A loading page for when a deck is being generated will be added.
 
 
 ## For developers:
