@@ -22,6 +22,9 @@ func (api *Api) Initialize(dbstring string) {
 		panic(err.Error())
 	}
 
+	// defer db.Close() // TODO // Reasearch if we need this. We don't
+		// But I want to research more.
+
 	api.Router = mux.NewRouter()
 }
 

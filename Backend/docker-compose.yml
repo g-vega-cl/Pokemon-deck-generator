@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: "Pokemon-Smalldoor-MySQL"
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    networks:
+      - default
+    restart: always
+    ports: 
+      - "3306:3306"
+    environment:
+      MYSQL_PASSWORD: "adminroot"
+      MYSQL_DATABASE: "Pokemon-Smalldoor"
+      MYSQL_USER: "root"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+  api:
+    container_name: "Pokemon-Smalldoor-API"
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes: 
+      - .:/app/
+networks:
+  default:
+volumes:
+  mysql_data:
+

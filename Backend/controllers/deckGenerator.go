@@ -342,7 +342,6 @@ func addDeckToDatabase(deck models.Deck, db *sql.DB) {
 	dbQuery := fmt.Sprintf("INSERT INTO Deck(Id,Name,Type,Image,Cards) VALUES('%s','%s','%s','%s','%s')", deck.Id, deck.Name, deck.Type, deck.Image, cardsJson)
 	stmt, err := db.Prepare(dbQuery)
 
-	// INSERT INTO posts(id,title) VALUES('2','My post')
 	if err != nil {
 		panic(err.Error())
 	}

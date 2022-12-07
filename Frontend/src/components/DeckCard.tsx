@@ -12,15 +12,14 @@ export interface IComponentDeckCard {
     setNavbarTabValue: React.Dispatch<number>;
 }
 
-const DeckCard = ({ deckCard, setNavbarTabValue }: IComponentDeckCard) => {
-    const navigate = useNavigate();
-    const handleClick = () => {
-        setNavbarTabValue(2);
-        navigate(`/decks/${deckCard.Id}`);
-    }
-  
+export interface IComponentDeckCardCard {
+    deckCard: IDeckCard;
+    handleClick: () => void;
+}
+
+export const DeckCardCard = ({deckCard, handleClick}: IComponentDeckCardCard) => {
     return (
-        <Card sx={{ height: "100%" }}>
+        <Card sx={{ height: "100%" }} data-testId="DeckCard-CardTag">
         <CardActionArea
             onClick={handleClick}
         >
@@ -41,6 +40,18 @@ const DeckCard = ({ deckCard, setNavbarTabValue }: IComponentDeckCard) => {
             </CardContent>
         </CardActionArea>
         </Card>
+    );
+}
+
+const DeckCard = ({ deckCard, setNavbarTabValue }: IComponentDeckCard) => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        setNavbarTabValue(2);
+        navigate(`/decks/${deckCard.Id}`);
+    }
+  
+    return (
+        <DeckCardCard deckCard={deckCard} handleClick={handleClick}/>
     );
 };
 
