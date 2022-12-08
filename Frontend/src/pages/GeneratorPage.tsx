@@ -35,7 +35,7 @@ const GeneratorPage = () => {
         <Grid xs={24} item={true}>
           <TextField id="deck-name-outlined-basic" label="Type the name of your deck" variant="outlined" value={deckName} onChange={(e) => setDeckName(e.target.value)} style={{marginBottom:'20px', width:'100%'}}/>
           <DeckTypeSelect deckType={deckType} setDeckType={setDeckType}/>
-          <Button variant="contained" style={{ width: "100%", marginTop:'30px', height:'50px' }} onClick={handleGenerateDeck}>
+          <Button variant="contained" style={{ width: "100%", marginTop:'30px', height:'50px' }} onClick={handleGenerateDeck} disabled={isGeneratingDeck}>
             Generate deck
           </Button>
           {isGeneratingDeck && <LoadingPage />} 
