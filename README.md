@@ -3,7 +3,10 @@
 [Preview video](https://drive.google.com/file/d/1sjrnCzugxzX4aWUXVjxE-_YWe6bChRT2/view?usp=share_link)
 
 We only expect this project to run on your local machine.
-0. To make running this repo easier. A MySQL database was created in the cloud so the user does not have to worry about creating a local database
+You can run the repo on using `docker-compose up`. in the ./ folder
+
+If you want to run it without docker, follow the next instructions:
+
 1. If you want a local database: set up a MySQL with the following properties:
 	* name = Pokemon-Smalldoor
 	* username = root
@@ -13,6 +16,8 @@ We only expect this project to run on your local machine.
 2. go to Backend folder and run `go run main.go`
 	* If the server is not listening, try seeing if you have an instance running on port 8000.
 3. go to Frontend folder and run `npm start`
+
+Note: To make running this repo easier. A MySQL database was created in the cloud so the user does not have to worry about creating a local database
 
 ---
 
@@ -166,13 +171,13 @@ This database contains a table called "Deck" which has the properties:
 We have a MySQL database called "Pokemon-Smalldoor".
 
 # Docker.
-We are currently working on dockerizing the repo. 
+You can run the repo with: `docker-compose up`
 ## Backend
-For now, you can run the backend by:
+you can run the backend by:
 1. Go to /Backend
 2. Run `docker-compose up`
 
 ## Frontend
-For now, you can run the backend by:
+You can run the backend by:
 1. Go to /Frontend
 2. Run `docker-compose up`
