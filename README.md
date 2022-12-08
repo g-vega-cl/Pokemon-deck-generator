@@ -164,3 +164,15 @@ This database contains a table called "Deck" which has the properties:
 * Cards: json
 ## Localhost:
 We have a MySQL database called "Pokemon-Smalldoor".
+
+# Docker.
+We are currently working on dockerizing the repo. 
+## Backend
+For now, you can run the backend by:
+1. Go to /Backend
+2. Run `docker-compose up`
+
+## Frontend
+For now, you can run the backend by:
+1. Go to /Frontend
+2. Run `docker-compose up`
