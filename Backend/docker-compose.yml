@@ -1,8 +1,7 @@
 version: '3.7'
-
 services:
   db:
-    container_name: "Pokemon-Smalldoor-MySQL"
+    container_name: "pokemon_smalldoor"
     platform: linux/x86_64
     build:
       context: .
@@ -10,28 +9,39 @@ services:
     networks:
       - default
     restart: always
-    ports: 
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
       - "3306:3306"
+    # setting some env vars to create the DB
     environment:
-      MYSQL_PASSWORD: "adminroot"
       MYSQL_DATABASE: "Pokemon-Smalldoor"
-      MYSQL_USER: "root"
+      # MYSQL_USER: "root"
+      MYSQL_ROOT_PASSWORD: "adminroot"
+      # OR if you want to use "root" as the user, just these two lines
+      # MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      # MYSQL_DATABASE: ${DATABASE_NAME}
+
+    # we mount a data volume to make sure we don't lose data
     volumes:
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
   api:
-    container_name: "Pokemon-Smalldoor-API"
+    container_name:  "docker-pokemon-smalldoor"
+    # we want to use the image which is build from our Dockerfile
     build:
       context: .
       dockerfile: api.Dockerfile
     ports:
       - "8000:8000"
+    # we are depending on the mysql backend
     depends_on:
       - db
-    volumes: 
+    # We mount the working dir into the container, handy for development
+    # This is what makes the hot reloading work inside of a Docker container
+    volumes:
       - .:/app/
+
 networks:
   default:
 volumes:
   mysql_data:
-

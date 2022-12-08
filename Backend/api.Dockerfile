@@ -1,9 +1,12 @@
 # Change to golang 1.19
-FROM golang: 1.16-alpine 
+FROM golang:1.19-alpine
 
 WORKDIR /app
 
-RUN apk update && apk add libc-dev && apk add gcc && apk add make
+RUN apk update && \
+    apk add libc-dev && \
+    apk add gcc && \
+    apk add make
 
 COPY ./go.mod go.sum ./
 RUN go mod download && go mod verify
