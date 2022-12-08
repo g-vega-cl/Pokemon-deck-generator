@@ -3,8 +3,7 @@
 [Preview video](https://drive.google.com/file/d/1sjrnCzugxzX4aWUXVjxE-_YWe6bChRT2/view?usp=share_link)
 
 We only expect this project to run on your local machine.
-0. To make running this repo easier. A MySQL database was created in the cloud.
-		So the user does not have to worry about creating a local database
+0. To make running this repo easier. A MySQL database was created in the cloud so the user does not have to worry about creating a local database
 1. If you want a local database: set up a MySQL with the following properties:
 	* name = Pokemon-Smalldoor
 	* username = root

@@ -19,7 +19,7 @@ export interface IComponentDeckCardCard {
 
 export const DeckCardCard = ({deckCard, handleClick}: IComponentDeckCardCard) => {
     return (
-        <Card sx={{ height: "100%" }} data-testId="DeckCard-CardTag">
+        <Card sx={{ height: "100%" }} data-testid="DeckCard-CardTag">
         <CardActionArea
             onClick={handleClick}
         >
