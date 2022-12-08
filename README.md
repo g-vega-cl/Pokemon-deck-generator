@@ -3,7 +3,8 @@
 [Preview video](https://drive.google.com/file/d/1sjrnCzugxzX4aWUXVjxE-_YWe6bChRT2/view?usp=share_link)
 
 We only expect this project to run on your local machine.
-You can run the repo on using `docker-compose up`. in the ./ folder
+
+You can run the repo on using `docker-compose up` in the ./ folder
 
 If you want to run it without docker, follow the next instructions:
 
