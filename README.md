@@ -3,11 +3,14 @@
 [Preview video](https://drive.google.com/file/d/1sjrnCzugxzX4aWUXVjxE-_YWe6bChRT2/view?usp=share_link)
 
 We only expect this project to run on your local machine.
-1. Set up a MySQL database with the following properties:
+0. To make running this repo easier. A MySQL database was created in the cloud.
+		So the user does not have to worry about creating a local database
+1. If you want a local database: set up a MySQL with the following properties:
 	* name = Pokemon-Smalldoor
 	* username = root
 	* Password = adminroot
 	* URL:PORT = 127.0.0.1:3306
+	* See the Database structure section below for table configuration.
 2. go to Backend folder and run `go run main.go`
 	* If the server is not listening, try seeing if you have an instance running on port 8000.
 3. go to Frontend folder and run `npm start`
@@ -154,11 +157,11 @@ The Pokemon API to use is this one: https://docs.Pokemontcg.io/
 
 
 # Database structure:
-We have a MySQL database called "Pokemon-Smalldoor".
-
 This database contains a table called "Deck" which has the properties: 
 * Id: VARCHAR(100)
 * Name: VARCHAR(100) 
 * Type: VARCHAR(100)
 * Image: VARCHAR(100)
 * Cards: json
+## Localhost:
+We have a MySQL database called "Pokemon-Smalldoor".
