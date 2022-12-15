@@ -4,7 +4,7 @@
 
 We only expect this project to run on your local machine.
 
-You can run the repo on using `docker-compose up` in the ./ folder
+You can run the repo using `docker-compose up` in the ./ folder
 
 If you want to run it without docker, follow the next instructions:
 
@@ -36,7 +36,6 @@ For this assessment, we would like you to build a deck generator of Pokemon card
 * A form page for generating new decks
 
 ***Requirements for the backend***
-* We use Rails and Ruby but you can complete this with any backend language you feel like, bonus point if you don’t use Javascript.
 * Data should be stored in a relational database (either MySQL or Postgres)
 
 The Pokemon API to use is this one: https://docs.Pokemontcg.io/
