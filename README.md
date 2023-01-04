@@ -111,6 +111,7 @@ The Pokemon API to use is this one: https://docs.Pokemontcg.io/
 ## Frontend.
 * The data is cached, so a user does not need to wait for data to be re-fetched.
 * There are components like DeckCard and PokemonCard that are really similar. But I decided keep them separate because it's easier to extend in the future.
+* fix a few inconsistencies in the code, for example using both fetch directly and axios on the same page.
 
 
 
